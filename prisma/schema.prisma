@@ -22,7 +22,7 @@ model Goal {
     tittle String
     description String
     isComplete Boolean @default(false)
-    link String?
+    link String
     creatorEmail String
 }
 
