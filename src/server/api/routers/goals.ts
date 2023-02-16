@@ -7,7 +7,7 @@ export const goalsCRUDRouter = createTRPCRouter({
     let response = prisma.goal.findMany({
       where: {
         creatorEmail: {
-          equals: input,
+          equals: "goliveirapk@gmail.com",
         },
       },
     });

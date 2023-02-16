@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { api } from "../utils/api";
 import CreateGoal from "./components/createGoalComponent";
 import Goals from "./components/goals";
 
@@ -22,10 +21,6 @@ const Home: NextPage = () => {
 export default Home;
 
 const AuthControler: React.FC = () => {
-  function notUndefinedOrNull(something: any) {
-    return something !== null && something !== undefined
-  }
-
   const { data: sessionData } = useSession();
   function loggedOnly() {
     if (sessionData && sessionData.user.email !== null && sessionData.user.email !== undefined) {

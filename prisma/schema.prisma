@@ -18,11 +18,11 @@ model Example {
 }
 
 model Goal {
-    id     String @id @default(cuid())
-    tittle String
-    description String
-    isComplete Boolean @default(false)
-    link String
+    id           String  @id @default(cuid())
+    tittle       String
+    description  String
+    isComplete   Boolean @default(false)
+    link         String
     creatorEmail String
 }
 
@@ -41,7 +41,7 @@ model Account {
     id_token          String? // @db.Text
     session_state     String?
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
+    @@index([userId])
     @@unique([provider, providerAccountId])
 }
 
@@ -51,6 +51,7 @@ model Session {
     userId       String
     expires      DateTime
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    @@index([userId])
 }
 
 model User {
