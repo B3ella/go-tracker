@@ -2,17 +2,12 @@ import { api } from "../../utils/api";
 import GoalComponent from "./goalComponent";
 
 function Goals(props: { creatorEmail: string }) {
-    let query = api.goalsCrud.getUserGoals.useQuery("goliveirapk@gmail.com")
-    if (query.isError) return <>{`error: ${query.error}`}</>
+    const data = api.goalsCrud.getUserGoals.useQuery(props.creatorEmail).data
 
-    let goals = query.data
-    if (goals == undefined) { return <></> }
-
-    const listItems = goals.map(goal =>
-        <GoalComponent goal={goal} />
-    )
-
-    return <>{listItems}</>
+    const Goals = data?.map(goal => {
+        return <GoalComponent key={goal.id} goal={goal} />
+    })
+    return Goals
 }
 
 
