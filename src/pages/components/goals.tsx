@@ -7,7 +7,7 @@ function Goals(props: { creatorEmail: string }) {
     const Goals = data?.map(goal => {
         return <GoalComponent key={goal.id} goal={goal} />
     })
-    return Goals
+    return <>{Goals}</>
 }
 
 
