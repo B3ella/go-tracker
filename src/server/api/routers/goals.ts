@@ -14,7 +14,7 @@ export const goalsCRUDRouter = createTRPCRouter({
     return response;
   }),
 
-  createGoal: protectedProcedure
+  createGoal: publicProcedure
     .input(
       z.object({
         tittle: z.string(),
@@ -24,7 +24,6 @@ export const goalsCRUDRouter = createTRPCRouter({
       })
     )
     .mutation(({ input }) => {
-      let response = prisma.goal.create({ data: input });
-      return response;
+      return prisma.goal.create({ data: input });
     }),
 });

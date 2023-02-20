@@ -5,22 +5,24 @@ const CreateGoal = (props: { creatorEmail: string | null | undefined }) => {
     let [tittle, setTittle] = useState('')
     let [description, setDescription] = useState('')
     let [link, setLink] = useState('')
-
+    let mutation = api.goalsCrud.createGoal.useMutation()
     async function handleSubmit() {
-        if (props.creatorEmail !== undefined && props.creatorEmail !== null) {
+        if (props.creatorEmail) {
             let goal = {
                 tittle,
                 description,
                 link,
                 creatorEmail: props.creatorEmail
             }
-            api.goalsCrud.createGoal.useMutation().mutate(goal)
+            mutation.mutate(goal)
+        } else {
+            throw new Error('Não passou os dados certos')
         }
     }
 
 
     return (<>
-        <form method="post">
+        <form onSubmit={e => { e.preventDefault(); handleSubmit() }}>
             <label htmlFor="tittle">tittle:</label>
             <input
                 type="text"
@@ -42,7 +44,7 @@ const CreateGoal = (props: { creatorEmail: string | null | undefined }) => {
                 onChange={e => { setLink(e.currentTarget.value) }}
                 id="link"
                 name="link" />
-            <button onSubmit={handleSubmit} type="submit">Submit</button>
+            <button onSubmit={e => e.preventDefault()} type="submit">Submit</button>
         </form>
     </>)
 }
