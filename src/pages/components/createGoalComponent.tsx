@@ -22,13 +22,14 @@ const CreateGoal = (props: { creatorEmail: string | null | undefined }) => {
 
 
     return (<>
-        <form onSubmit={e => { e.preventDefault(); handleSubmit() }}>
-            <label htmlFor="tittle">tittle:</label>
+        <form className="flex flex-col text-white" onSubmit={e => { e.preventDefault(); handleSubmit() }}>
+            <label htmlFor="tittle" className="">tittle:</label>
             <input
                 type="text"
                 value={tittle}
                 onChange={e => { setTittle(e.currentTarget.value) }}
                 id="tittle"
+                className="bg-opacity-5 border-transparent drop-shadow-md bg-slate-50 shadow appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                 name="tittle" />
             <label htmlFor="description">description:</label>
             <input
@@ -36,6 +37,7 @@ const CreateGoal = (props: { creatorEmail: string | null | undefined }) => {
                 value={description}
                 onChange={e => { setDescription(e.currentTarget.value) }}
                 id="description"
+                className="bg-opacity-5 border-transparent drop-shadow-md bg-slate-50 shadow appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                 name="description" />
             <label htmlFor="link">link:</label>
             <input
@@ -43,6 +45,7 @@ const CreateGoal = (props: { creatorEmail: string | null | undefined }) => {
                 value={link}
                 onChange={e => { setLink(e.currentTarget.value) }}
                 id="link"
+                className="bg-opacity-5 border-transparent drop-shadow-md bg-slate-50 shadow appearance-none border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
                 name="link" />
             <button onSubmit={e => e.preventDefault()} type="submit">Submit</button>
         </form>
