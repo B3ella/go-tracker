@@ -1,4 +1,4 @@
-import { api } from "../../utils/api";
+import { api } from "../utils/api";
 import GoalComponent from "./goalComponent";
 
 function Goals(props: { creatorEmail: string }) {

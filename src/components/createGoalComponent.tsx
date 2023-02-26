@@ -1,22 +1,20 @@
 import { useState } from "react";
-import { api } from "../../utils/api";
+import { api } from "../utils/api";
 
 const CreateGoal = (props: { creatorEmail: string | null | undefined }) => {
-    let [tittle, setTittle] = useState('')
-    let [description, setDescription] = useState('')
-    let [link, setLink] = useState('')
-    let mutation = api.goalsCrud.createGoal.useMutation()
-    async function handleSubmit() {
+    const [tittle, setTittle] = useState('')
+    const [description, setDescription] = useState('')
+    const [link, setLink] = useState('')
+    const mutation = api.goalsCrud.createGoal.useMutation()
+    function handleSubmit() {
         if (props.creatorEmail) {
-            let goal = {
+            const goal = {
                 tittle,
                 description,
                 link,
                 creatorEmail: props.creatorEmail
             }
             mutation.mutate(goal)
-        } else {
-            throw new Error('Não passou os dados certos')
         }
     }
 

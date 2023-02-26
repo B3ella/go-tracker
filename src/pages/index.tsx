@@ -1,8 +1,8 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut, useSession } from "next-auth/react";
-import CreateGoal from "./components/createGoalComponent";
-import Goals from "./components/goals";
+import CreateGoal from "../components/createGoalComponent";
+import Goals from "../components/goals";
 
 const Home: NextPage = () => {
   return (

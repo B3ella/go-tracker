@@ -1,13 +1,13 @@
 import { z } from "zod";
 import { prisma } from "../../db";
-import { createTRPCRouter, publicProcedure, protectedProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const goalsCRUDRouter = createTRPCRouter({
   getUserGoals: publicProcedure.input(z.string()).query(({ input }) => {
-    let response = prisma.goal.findMany({
+    const response = prisma.goal.findMany({
       where: {
         creatorEmail: {
-          equals: "goliveirapk@gmail.com",
+          equals: input,
         },
       },
     });
