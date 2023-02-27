@@ -1,4 +1,4 @@
-function GoalComponent(props: { goal: { link: string, tittle: string, description: string } }) {
+export default function GoalComponent(props: { goal: { link: string, tittle: string, description: string } }) {
 
     const { link, tittle, description } = props.goal
 
@@ -9,4 +9,3 @@ function GoalComponent(props: { goal: { link: string, tittle: string, descriptio
         </a >
     )
 }
-export default GoalComponent

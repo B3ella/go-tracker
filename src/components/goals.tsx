@@ -1,14 +1,11 @@
 import { api } from "../utils/api";
 import GoalComponent from "./goalComponent";
 
-function Goals(props: { creatorEmail: string }) {
-    const data = api.goalsCrud.getUserGoals.useQuery(props.creatorEmail).data
+export default function Goals({ creatorEmail }: { creatorEmail: string }) {
+    const query = api.goalsCrud.getUserGoals.useQuery(creatorEmail)
+    const goalsData = query.data
 
-    const Goals = data?.map(goal => {
-        return <GoalComponent key={goal.id} goal={goal} />
-    })
-    return <div className="flex flex-col justify-between">{Goals}</div>
+    const goals = goalsData?.map(goal => <GoalComponent key={goal.id} goal={goal} />)
+
+    return <div className="flex flex-col justify-between">{goals}</div>
 }
-
-
-export default Goals
