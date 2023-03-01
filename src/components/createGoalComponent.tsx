@@ -1,4 +1,4 @@
-import { Dispatch, FormEvent, SetStateAction, useState } from "react";
+import { FormEvent, useState } from "react";
 import { api } from "../utils/api";
 import FormSet from "./formSet";
 
@@ -8,7 +8,13 @@ const CreateGoal = (props: { creatorEmail: string | null | undefined }) => {
     const [description, setDescription] = useState('')
     const [link, setLink] = useState('')
 
-    const mutation = api.goalsCrud.createGoal.useMutation()
+    const utils = api.useContext()
+
+    const mutation = api.goalsCrud.createGoal.useMutation({
+        onSuccess() {
+            utils.invalidate()
+        }
+    })
 
     function cleanStates() {
         setDescription('')
