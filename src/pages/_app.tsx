@@ -11,7 +11,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <SessionProvider session={session} refetchInterval={24 * 60 * 60} refetchOnWindowFocus={false}>
+    <SessionProvider
+      session={session}
+      refetchInterval={24 * 60 * 60}
+      refetchOnWindowFocus={false}
+    >
       <Component {...pageProps} />
     </SessionProvider>
   );
