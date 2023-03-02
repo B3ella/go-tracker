@@ -1,5 +1,5 @@
 import { FormEvent } from 'react';
-import { goalPropretys, goalType } from './componentTypes';
+import { goalPropretys, goalType } from '../types/GoalTypes';
 import FormNode from './FormNode';
 
 interface IProps {

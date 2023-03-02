@@ -1,4 +1,4 @@
-import { goalPropretys } from './componentTypes';
+import { goalPropretys } from '../types/GoalTypes';
 
 interface IFormSet {
     value: string;
