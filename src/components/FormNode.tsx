@@ -3,7 +3,7 @@ import { goalPropretys } from '../types/GoalTypes';
 interface IFormSet {
     value: string;
     name: goalPropretys;
-    onChange: (arg: string, arg1: goalPropretys) => void;
+    onChange: (arg0: string, arg1: string) => void;
 }
 
 export default function FormNode({ value, name, onChange }: IFormSet) {
@@ -14,10 +14,10 @@ export default function FormNode({ value, name, onChange }: IFormSet) {
             <input
                 type="text"
                 value={value}
-                id="tittle"
+                id={'form-' + name}
                 name={name}
                 onChange={(e) => {
-                    onChange(e.currentTarget.value, name);
+                    onChange(name, e.target.value);
                 }}
                 className="focus:shadow-outline appearance-none rounded border border-transparent bg-slate-50 bg-opacity-5 py-2 px-3 leading-tight shadow drop-shadow-md focus:outline-none"
             />

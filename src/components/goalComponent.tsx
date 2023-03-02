@@ -1,6 +1,6 @@
-export default function GoalComponent(props: { goal: { link: string; tittle: string; description: string } }) {
-    const { link, tittle, description } = props.goal;
+import { goalType } from '../types/GoalTypes';
 
+export default function GoalComponent({ link, tittle, description }: goalType) {
     return (
         <a
             href={link}
