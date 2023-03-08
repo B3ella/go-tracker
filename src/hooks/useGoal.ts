@@ -1,28 +1,23 @@
-import { FormEvent, useState } from 'react';
-import { api } from '../utils/api';
+import { FormEvent, useDebugValue, useState } from 'react';
+import useGoalHelper from './useGoalHelper';
 
 export default function useGoal(creatorEmail: string) {
-    const defaultGoal = {
-        tittle: '',
-        description: '',
-        link: '',
-        creatorEmail: creatorEmail,
-    };
+    const { postGoal, createDefaultGoal } = useGoalHelper();
+
+    const defaultGoal = createDefaultGoal(creatorEmail);
+
     const [goal, setGoal] = useState(defaultGoal);
 
-    const postGoal = api.goalsCrud.createGoal.useMutation({
-        onSuccess: () => api.useContext().invalidate(),
-    }).mutate;
-
-    const onSubmit = (event: FormEvent) => {
+    const onChange = (inputType: string, input: string) => {
+        setGoal({ ...goal, [inputType]: input });
+    };
+    const post = (event: FormEvent) => {
         event.preventDefault();
         postGoal(goal);
         setGoal(defaultGoal);
     };
 
-    const onChange = (inputType: string, input: string) => {
-        setGoal({ ...goal, [inputType]: input });
-    };
+    useDebugValue({ ...goal, post, onChange });
 
-    return { goal, onSubmit, onChange };
+    return { ...goal, post, onChange };
 }
