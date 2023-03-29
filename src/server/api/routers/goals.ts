@@ -28,7 +28,7 @@ export const goalsCRUDRouter = createTRPCRouter({
         }),
 
     deleteGoal: publicProcedure.input(z.string()).mutation(({ input }) => {
-        prisma.goal.delete({
+        void prisma.goal.delete({
             where: {
                 id: input,
             },

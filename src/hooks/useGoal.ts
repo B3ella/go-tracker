@@ -1,4 +1,5 @@
-import { FormEvent, useDebugValue, useState } from 'react';
+import { useDebugValue, useState } from 'react';
+import type { FormEvent } from 'react';
 import useGoalHelper from './useGoalHelper';
 
 export default function useGoal(creatorEmail: string) {
